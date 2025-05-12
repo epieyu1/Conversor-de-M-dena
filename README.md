@@ -1,119 +1,64 @@
-# 💱 Conversor de Monedas en Java
+*** Conversor de Monedas en Consola ***
 
-Este proyecto es una aplicación de consola en Java que permite convertir valores entre diferentes monedas utilizando tasas de cambio obtenidas en tiempo real desde una API pública.
+Este es un sencillo programa de consola en Java que permite a los usuarios convertir montos ya definidos, entre diferentes monedas utilizando tasas de cambio obtenidas en tiempo real desde una API externa, "exchangerate-api.com".
 
-## Acerca del Proyecto
+## Descripción General
 
-Este conversor de monedas fue desarrollado como parte del desafío académico para la Escuela Alura LATAM,En la formacion (java orientado a objectos, G8-ONE) dentro del programa Oracle Next Education. El objetivo principal es aplicar los conocimientos de Java para interactuar con APIs externas, manejar respuestas JSON y desarrollar una aplicación de consola funcional y bien estructurada.
+El programa presenta un menú interactivo donde el usuario puede seleccionar el par de monedas para la conversión (por ejemplo, Dólar a Peso Argentino, Peso Argentino a Dólar, etc.) e ingresar el monto que desea convertir. Luego, la aplicación se conecta a la API de "exchangerate-api.com" para obtener la tasa de cambio más reciente y calcula el monto convertido, mostrando tanto la tasa como el resultado final.
 
-El autor del proyecto es **Alexander Restrepo Epieyu mas ayuda academica**.
+## Características ##
 
-El programa realiza consultas a la API "Exchange Rate API" para obtener las tasas de cambio más recientes. Utiliza `java.net.http.HttpClient` para las peticiones HTTP y la biblioteca Gson para el procesamiento eficiente de los datos en formato JSON. El código está desarrollado en Java 17, buscando seguir principios de responsabilidad única por clase.
+ * Menú Interactivo:** Interfaz de usuario basada en texto fácil de usar.
+ * Múltiples Pares de Monedas: Soporta conversiones predefinidas:
+ 
+    === Conversor de Monedas ===
+    
+    1: Dólar => Peso Argentino
+    2: Peso argentino => Dolar
+    3: Dólar => Real Brasileño 
+    4: Real Brasileño => Dolar
+    5: Dólar => Peso Colombiano
+    6: Peso Colombiano => Dolar
+    7: Salir
+    
+ * Tasas de Cambio en Tiempo Real: Utiliza la API `v6.exchangerate-api.com` para obtener datos actualizados.
+ * Cálculo de Conversión:** Muestra la tasa de cambio aplicada y el monto resultante.
+ * Formato de Salida Claro:** Los resultados numéricos se presentan con formato para facilitar la lectura.
 
-## ✨ Características
+*** Prerrequisitos ***
 
-* Conversión de monedas en tiempo real.
-* Interfaz de usuario interactiva a través de la consola.
-* Uso de tasas de cambio actualizadas desde una API externa.
+_ Java Development Kit (JDK):** Versión 17 u otro.
+_ Conexión a Internet:** Necesaria para que la aplicación pueda acceder a la API de tasas de cambio.
 
-## 🛠️ Tecnologías Utilizadas
+*** Tecnologías Utilizadas ***
+- Java (JDK 17 u otra version)
+- Gson (para manejo de JSON)
+- HttpClient (para solicitudes HTTP)
+- Exchange Rate API
 
-* **Lenguaje:** Java 17.
-* **Cliente HTTP:** `java.net.http.HttpClient` (Módulo `java.net.http`)
-* **Procesamiento JSON:** [Gson](https://github.com/google/gson)
-* **API de Tasas de Cambio:** [Exchange Rate API](https://www.exchangerate-api.com/)
+1. Clona este repositorio o descarga el archivo (.java).
+2. Descarga y agrega la librería [Gson 2.13.1](https://repo1.maven.org/maven2/com/google/code/gson/gson/2.13.1/).
+3. Regístrate en [ExchangeRate-API](https://www.exchangerate-api.com/) y obtén tu API key.
+4. Sustituye la API key en el código:  
+   
+   String url = "https://v6.exchangerate-api.com/v6/TU_API_KEY/pair/" + base + "/" + destino + "/" + monto;
 
-## 📋 Prerrequisitos
+*** Ejemplo de Uso ***
 
-Antes de comenzar, asegúrate de tener instalado lo siguiente:
+=== Conversor de Monedas ===
+1. Dólar => Peso argentino
+ 
+Selecciona una opción: 1
+2. Ingresa el monto a convertir: 100
 
-* **Java Development Kit (JDK):** Versión 17 o superior.
-* **Git:** Para clonar el repositorio.
-* **API Key de Exchange Rate API:** Necesitarás registrarte para obtener una clave gratuita.
-* **Acceso a Internet:** Para que la aplicación pueda consultar la API.
-* **Biblioteca Gson:** Asegúrate de que la biblioteca Gson esté disponible en tu classpath. Si no utilizas un gestor de dependencias como Maven o Gradle, deberás descargar el archivo `.jar` de Gson y añadirlo manualmente a tu proyecto/classpath.
+=== Resultado de Conversión ===
+De: USD → A: ARS
+Tasa: 1 USD = 900.50 ARS
+Resultado: 100 USD = 90,050.00 ARS
 
-## 🚀 Instalación y Configuración
+Autor
+Desarrollado por Alexander Restrepo Epieyu, mas Ayuda acamedica.
 
-Sigue estos pasos para poner en funcionamiento el conversor de monedas:
+Licencia
+Este proyecto está bajo la Licencia MIT. Puedes usarlo, modificarlo y distribuirlo libremente.
 
-1.  **Clonar el Repositorio:**
-    ```bash
-    git clone https://URL_DE_TU_REPOSITORIO_AQUI.git
-    cd nombre-del-directorio-del-proyecto
-    ```
-    *(Reemplaza `https://URL_DE_TU_REPOSITORIO_AQUI.git` con la URL real de tu repositorio y `nombre-del-directorio-del-proyecto` con el nombre de la carpeta del proyecto).*
-
-2.  **Configurar la API Key (MUY IMPORTANTE):**
-    Este proyecto requiere una API key de [Exchange Rate API](https://www.exchangerate-api.com/) para funcionar.
-
-    * **Obtén tu API Key:** No necesitas registrarte para obtener una clave gratuita en [www.exchangerate-api.com](https://www.exchangerate-api.com/).
-
-## 💻 Uso
-
-1.  **Ejecutar la Aplicación:**
-    * **Desde un IDE (Recomendado):** Abre el proyecto en tu entorno de desarrollo integrado (como IntelliJ IDEA, Eclipse, NetBeans). Localiza y ejecuta la clase principal 
-    Al iniciar la aplicación, se te presentará un menú similar a este:
-
-    ```
-    ******************************************************
-    Sea bienvenido/a al Conversor de Monedas =]
-
-    Elija una opción de conversión:
-    1) Dólar (USD) => Peso Argentino (ARS)
-    2) Peso Argentino (ARS) => Dólar (USD)
-    3) Dólar (USD) => Real Brasileño (BRL)
-    4) Real Brasileño (BRL) => Dólar (USD)
-    5) Dólar (USD) => Peso Colombiano (COP)
-    6) Peso Colombiano (COP) => Dólar (USD)
-    7) Salir
-
-    Por favor, elija una opción válida:
-    ******************************************************
-    ```
-    * Ingresa el número de la opción de conversión que deseas realizar y presiona `Enter`.
-    * A continuación, el programa te solicitará que ingreses la cantidad de dinero que deseas convertir. Escríbela y presiona `Enter`.
-    * El resultado de la conversión, utilizando la tasa de cambio actual, se mostrará en pantalla.
-
-    **Ejemplo de Interacción:**
-    ```
-    Por favor, elija una opción válida: 1
-    Ingrese la cantidad que desea convertir de USD a ARS: 100
-    El valor de 100.00 [USD] corresponde al valor final de =>>> XXX.XX [ARS]
-    ```
-    *(El valor XXX.XX dependerá de la tasa de cambio en el momento de la consulta).*
-
-## 📂 Estructura del Proyecto (Ejemplo)
-
-Una posible estructura de clases podría ser:
-
-* `Principal.java`: Clase principal que contiene el método `main` y maneja el menú y la interacción con el usuario.
-* `ConsultaMoneda.java` (o `ApiConnector.java`): Clase responsable de realizar las consultas a la API de Exchange Rate.
-* `Moneda.java` (o `ConversionRate.java`): Clase (record o regular) para mapear la respuesta JSON de la API.
-* `GeneradorDeArchivo.java` (si aplica): Clase para guardar historial de conversiones (si esta funcionalidad existe).
-* Otras clases de modelo o utilidad según sea necesario.
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas mejorar este proyecto:
-
-1.  Haz un Fork del repositorio.
-2.  Crea una nueva rama para tu característica o corrección (`git checkout -b feature/NuevaCaracteristica` o `fix/CorreccionError`).
-3.  Realiza tus cambios y haz commit (`git commit -m 'Añade NuevaCaracteristica'`).
-4.  Haz Push a tu rama (`git push origin feature/NuevaCaracteristica`).
-5.  Abre un Pull Request.
-
-## 📄 Licencia
-
-Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-*(Deberás crear un archivo `LICENSE` en la raíz de tu repositorio con el texto de la Licencia MIT).*
-
-## 🧑‍💻 Autor y Agradecimientos
-
-* **Autor:** Alexander Restrepo Epieyu
-* **GitHub:** [TuPerfilDeGitHub](https://github.com/tu_usuario_aqui) *(Reemplaza con tu enlace)*
-
-Este proyecto fue desarrollado como un desafío dentro del programa **Oracle Next Education (ONE)** en colaboración con **Alura LATAM**.
-
----
-¡Esperamos que este conversor de monedas te sea útil!
